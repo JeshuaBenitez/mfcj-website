@@ -5,6 +5,14 @@ body{
   background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(to right, #4c1d95, #9333ea); /* tu fondo actual */
+}
+
 /*HeroSection.jsx*/
 
 /* Estilo base */
