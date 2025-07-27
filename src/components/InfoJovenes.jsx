@@ -13,6 +13,7 @@ import img10 from '../assets/img10.jpg';
 import img11 from '../assets/img11.jpg';
 import img12 from '../assets/img12.jpg';
 import img13 from '../assets/img13.jpg';
+import img14 from '../assets/img14.jpg';
 
 export default function InfoJovenes() {
   return (
@@ -40,7 +41,7 @@ export default function InfoJovenes() {
           <img src={img07} alt="mfcj 7"/>
         </div>
         <div className="gallery__item">
-          <img src={img08} alt="mfcj 8"/>
+          <img src={img14} alt="mfcj 14"/>
         </div>
         <div className="gallery__item">
           <img src={img09} alt="mfcj 9"/>
