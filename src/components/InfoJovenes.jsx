@@ -17,7 +17,7 @@ import img13 from '../assets/img13.jpg';
 export default function InfoJovenes() {
   return (
     <div data-aos="fade-up">
-      <main className="gallery">
+      <main className="gallery" data-aos="fade-up">
         <div className="gallery__item">
           <img src={img01} alt="mfcj 1"/>
         </div>

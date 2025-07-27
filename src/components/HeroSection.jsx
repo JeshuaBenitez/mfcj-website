@@ -16,21 +16,13 @@ export default function HeroSection() {
             Vive una experiencia única, llena de fe, amistad y crecimiento personal
           </p>
           <div className="hero-buttons">
-            <button
-              onClick={() =>
-                document.getElementById("info-jovenes")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="btn-morado">
+            <a href="#info-jovenes" className="btn-morado">
               Jóvenes 15–25 años
-            </button>
+            </a>
 
-            <button
-              onClick={() =>
-                document.getElementById("info-adolescentes")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="btn-rosa">
+            <a href="#info-adolescentes" className="btn-rosa">
               Adolescentes 11–14 años
-            </button>
+            </a>
           </div>
         </div>
 

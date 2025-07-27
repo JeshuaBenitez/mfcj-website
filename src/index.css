@@ -9,6 +9,7 @@ html, body {
   backface-visibility: hidden;
   transform: translateZ(0);
   background: linear-gradient(to right, #6E48AA, #9D50BB);
+  scroll-behavior: smooth;
 }
 
 /* =================== HERO SECTION =================== */
@@ -361,35 +362,29 @@ img{
 /* ========== HONEYCOMB GALLERY (HEX GRID) ========== */
 .gallery {
   /* Tamaño base del hexágono */
-  --hex: 160px;       /* ancho (desktop) */
-  --gap: 14px;        /* separación */
-  --row-h: calc(var(--hex) * 0.866); /* alto de una fila de hex (sin la punta): sin(60°)*hex */
+  --hex: 180px;               /* ancho del hexágono en desktop */
+  --gap: 20px;                /* separación horizontal entre hexágonos */
+  --row-h: calc(var(--hex) * 0.866); /* alto efectivo de una fila (sin punta): sin(60°) * hex */
 
   width: 100%;
-  max-width: 1380px;   /* ajústalo si quieres más columnas */
-  margin: 4rem auto 2rem;
-  padding: 1rem 0;
+  max-width: 1300px;
+  margin: 5rem auto 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--hex), 1fr));
   grid-auto-rows: var(--row-h);
   gap: var(--gap);
   justify-content: center;
-  position: relative;
 }
 
-/* Hex base */
 .gallery__item {
   width: var(--hex);
-  height: calc(var(--hex) * 1.154); /* altura total del hexágono (1 / cos(30°)) */
+  height: calc(var(--hex) * 1.154); /* altura de un hex (1 / cos(30°)) */
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   overflow: hidden;
-  position: relative;
-  margin: auto;
-  transition: filter 0.35s;
-  will-change: transform;
+  margin: 0 auto; /* centra cada hex dentro de su celda */
+  transition: filter .35s;
 }
 
-/* Imagen dentro del hex */
 .gallery__item img {
   width: 100%;
   height: 100%;
@@ -397,118 +392,37 @@ img{
   display: block;
 }
 
-/* Hover en desktop */
-.gallery__item:hover { 
-  filter: brightness(0.35);
-}
-
-/* Desplazamiento para formar el patrón
-   👉 En filas alternas, "subimos" medio hex para que encaje */
+/* En desktop: las filas impares se suben medio hex con MARGEN (no transform) */
 .gallery__item:nth-child(odd) {
-  transform: translateY(calc(var(--row-h) * -0.5));
+  margin-top: calc(var(--row-h) / -2);
 }
 
-/* Ajuste fino: cuando hay 1 columna (mobile muy pequeño), evitamos saltos raros */
-@media (max-width: 550px) {
+/* Hover sólo en desktop */
+@media (hover: hover) {
+  .gallery__item:hover {
+    filter: brightness(.35);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+/* Tablets */
+@media (max-width: 1024px) {
+  .gallery {
+    --hex: 150px;
+    --gap: 16px;
+    --row-h: calc(var(--hex) * 0.866);
+  }
+}
+/* Móviles: quitamos el offset, se apilan bonitos */
+@media (max-width: 600px) {
   .gallery {
     --hex: 120px;
     --gap: 12px;
-    grid-auto-rows: calc(var(--hex) * 0.866);
+    --row-h: calc(var(--hex) * 0.866);
   }
   .gallery__item:nth-child(odd) {
-    transform: none; /* Todo en bloque */
+    margin-top: 0;
   }
-}
-
-/* MEDIA QUERIES */
-@media screen and (min-width: 270px) and (max-width: 504px) {
-  .gallery__item:first-of-type{
-    grid-column: 1 / span 2;
-  }
-
-  .gallery {
-    grid-auto-rows: 283px;
-  }
-}
-
-@media screen and (min-width: 505px) and (max-width: 685px) {
-  .gallery__item:nth-of-type(odd) {
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 686px) and (max-width: 862px) {
-  .gallery__item:nth-of-type(3n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 863px) and (max-width: 1038px) {
-  .gallery__item:nth-of-type(4n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1039px) and (max-width: 1090px) {
-  .gallery__item:nth-of-type(5n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1039px) and (max-width: 1215px) {
-  .gallery__item:nth-of-type(5n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1216px) and (max-width: 1391px) {
-  .gallery__item:nth-of-type(6n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1392px) and (max-width: 1490px) {
-  .gallery__item:nth-of-type(7n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1491px) and (max-width: 1750px) {
-  .gallery__item:nth-of-type(8n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1751px) and (max-width: 1925px) {
-  .gallery__item:nth-of-type(9n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-@media screen and (min-width: 1926px) and (max-width: 2100px) {
-  .gallery__item:nth-of-type(10n + 1){
-    grid-column: 2 / span 2;
-  }
-}
-
-/* Opcional: fuerza # de columnas por breakpoint */
-@media (min-width: 1500px) {
-  .gallery { grid-template-columns: repeat(7, var(--hex)); }
-}
-@media (min-width: 1200px) and (max-width: 1499px) {
-  .gallery { grid-template-columns: repeat(6, var(--hex)); }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .gallery { grid-template-columns: repeat(5, var(--hex)); }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .gallery { grid-template-columns: repeat(4, var(--hex)); }
-}
-@media (min-width: 551px) and (max-width: 767px) {
-  .gallery { grid-template-columns: repeat(3, var(--hex)); }
-}
-@media (max-width: 550px) {
-  .gallery { grid-template-columns: repeat(2, var(--hex)); }
 }
 
 /* InfoSection.jsx */
