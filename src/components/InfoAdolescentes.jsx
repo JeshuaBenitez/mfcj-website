@@ -4,7 +4,7 @@ import React from "react";
 export default function InfoAdolescentes() {
   return (
     <div data-aos="fade-up">
-    <section id="info-adolescentes" className="info-adolescentes">s
+    <section id="info-adolescentes" className="info-adolescentes">
       <h2 className="info-title">Retiro de Adolescentes (11–14 años)</h2>
       <p className="info-date">📅 Fecha: 30 de Agosto</p>
       <p className="info-place">📍 Punto de encuentro: Parroquia La Santa Cruz</p>

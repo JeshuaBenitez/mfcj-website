@@ -2,16 +2,20 @@
 import React from "react";
 import collageImg from "../assets/collage.png";
 import mfcjlogo from "../assets/mfcj-logo.jpg";
-// import { scrollToId } from "../utils/scrollToId"; // si hiciste el helper en archivo aparte
 
-const scrollToId = (id, offset = -20) => {
+const scrollToId = (id) => {
   const el = document.getElementById(id);
   if (!el) return;
-  const top = el.getBoundingClientRect().top + window.pageYOffset + offset;
-  window.scrollTo({ top, behavior: 'smooth' });
+  const y = el.getBoundingClientRect().top + window.pageYOffset - 10;
+  window.scrollTo({ top: y, behavior: "smooth" });
 };
 
 export default function HeroSection() {
+  const handleNav = (e, id) => {
+    e.preventDefault();
+    scrollToId(id);
+  };
+
   return (
     <header className="hero-wrapper">
       <img src={mfcjlogo} alt="mfcjlogo" className="hero-logo" />
@@ -25,19 +29,23 @@ export default function HeroSection() {
           </p>
 
           <div className="hero-buttons">
-            <button
+            <a
+              href="#info-jovenes"
               className="btn-morado"
-              onClick={() => scrollToId("info-jovenes", -10)}
+              onClick={(e) => handleNav(e, "info-jovenes")}
+              onTouchStart={(e) => handleNav(e, "info-jovenes")}
             >
               Jóvenes 15–25 años
-            </button>
+            </a>
 
-            <button
+            <a
+              href="#info-adolescentes"
               className="btn-rosa"
-              onClick={() => scrollToId("info-adolescentes", -10)}
+              onClick={(e) => handleNav(e, "info-adolescentes")}
+              onTouchStart={(e) => handleNav(e, "info-adolescentes")}
             >
               Adolescentes 11–14 años
-            </button>
+            </a>
           </div>
         </div>
 

@@ -162,17 +162,22 @@ html, body {
   /* Contenedor principal del hero en mobile */
   .hero-diagonal {
     flex-direction: column;
-    clip-path: none;                /* sin clip para no cortar y no crear stacking raro */
+    clip-path: none;                /* sin clip para no cortar */
     padding: 2rem 1rem;
     margin: 0 1rem;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    pointer-events: none;           /* Bloquea eventos en el contenedor */
+    pointer-events: auto;           /* ← MUY IMPORTANTE: que reciba eventos */
     z-index: 2;
   }
 
-  /* Reactiva eventos SOLO en el texto y los botones */
+  /* Overlay NO debe bloquear */
+  .hero-overlay {
+    pointer-events: none !important;
+  }
+
+  /* Reactiva eventos y asegura stacking */
   .hero-text-side,
   .hero-buttons,
   .hero-buttons * {
@@ -210,24 +215,26 @@ html, body {
     max-width: 280px;
     font-size: 1rem;
     padding: 0.85rem 1.4rem;
+    z-index: 6; /* por cualquier overlay perdido */
   }
 
   /* Imagen del lado derecho */
   .hero-img-side {
     padding: 1rem 0 0;
     order: 2;               /* después del texto */
-    pointer-events: none;   /* que no bloquee */
+    pointer-events: none;   /* no interfiere */
     z-index: 1;
   }
 
   .hero-img {
-    max-height: 260px;
+    max-height: 240px;
     border-radius: 18px;
   }
 
   /* Logo más pequeño */
   .hero-logo {
     width: 60px;
+    z-index: 7;
   }
 }
 
