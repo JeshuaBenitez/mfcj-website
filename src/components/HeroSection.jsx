@@ -27,28 +27,7 @@ export default function HeroSection() {
           <p className="hero-text">
             Vive una experiencia única, llena de fe, amistad y crecimiento personal
           </p>
-
-          <div className="hero-buttons">
-            <a
-              href="#info-jovenes"
-              className="btn-morado"
-              onClick={(e) => handleNav(e, "info-jovenes")}
-              onTouchStart={(e) => handleNav(e, "info-jovenes")}
-            >
-              Jóvenes 15–25 años
-            </a>
-
-            <a
-              href="#info-adolescentes"
-              className="btn-rosa"
-              onClick={(e) => handleNav(e, "info-adolescentes")}
-              onTouchStart={(e) => handleNav(e, "info-adolescentes")}
-            >
-              Adolescentes 11–14 años
-            </a>
-          </div>
         </div>
-
         <div className="hero-img-side">
           <img src={collageImg} alt="Juventud MFCJ" className="hero-img" />
         </div>
