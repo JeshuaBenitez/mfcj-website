@@ -96,7 +96,7 @@ export default function InfoJovenes() {
             rel="noopener noreferrer"
             className="contact-btn whatsapp"
           >
-            📱 WhatsApp <br /> 2721656576
+            📱 WhatsApp <br /> 2722359577
           </a>
           <a
             href="https://www.instagram.com/mfcj_santacruz"

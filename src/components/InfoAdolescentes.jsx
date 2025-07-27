@@ -42,7 +42,7 @@ export default function InfoAdolescentes() {
             <span className="emoji">📱</span>
             <div className="text">
               <strong>WhatsApp</strong><br />
-              2721656576
+              2722359577
             </div>
           </a>
           <a

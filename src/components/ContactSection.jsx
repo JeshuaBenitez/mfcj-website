@@ -15,7 +15,7 @@ export default function ContactSection() {
           rel="noopener noreferrer"
           className="contact-btn whatsapp"
         >
-          📱 WhatsApp: 2721656576
+          📱 WhatsApp: 2722359577
         </a>
         <a
           href="https://www.instagram.com/mfcj_santacruz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="

@@ -42,15 +42,11 @@ body{
 
 
 /* Diseño diagonal */
+/* Evita destellos blancos en móviles */
 .hero-diagonal {
-  position: relative;
-  display: flex;
-  width: 100%;
-  max-width: 1400px;
-  z-index: 2;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .hero-text-side {
