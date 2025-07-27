@@ -16,13 +16,8 @@ export default function HeroSection() {
             Vive una experiencia única, llena de fe, amistad y crecimiento personal
           </p>
           <div className="hero-buttons">
-            <a href="#info-jovenes" className="btn-morado">
-              Jóvenes 15–25 años
-            </a>
-
-            <a href="#info-adolescentes" className="btn-rosa">
-              Adolescentes 11–14 años
-            </a>
+            <a href="#info-jovenes" className="btn-morado">Jóvenes 15–25 años</a>
+            <a href="#info-adolescentes" className="btn-rosa">Adolescentes 11–14 años</a>
           </div>
         </div>
 
