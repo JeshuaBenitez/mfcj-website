@@ -1,62 +1,74 @@
 /* body */
-body{
-  background: #9D50BB;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-height: 100%;
   overflow-x: hidden;
-  background: linear-gradient(to right, #4c1d95, #9333ea); /* tu fondo actual */
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  background: linear-gradient(to right, #6E48AA, #9D50BB);
 }
 
-/*HeroSection.jsx*/
+/* =================== HERO SECTION =================== */
 
-/* Estilo base */
+/* Contenedor general */
 .hero-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
-  background-image: url('../src/assets/collage.png'); /* Fondo tipo collage */
+  min-height: 100vh;          /* en lugar de height fijo */
+  background-image: url('../src/assets/collage.png');
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow: visible;          /* <-- evita que recorte contenido */
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
+/* Capa morada oscura que suaviza el collage */
 .hero-overlay {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(to right, rgba(76, 29, 149, 0.8), rgba(124, 58, 237, 0.8));
   z-index: 1;
+  pointer-events: none;        /* <-- para no bloquear botones */
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
+/* Logo */
 .hero-logo {
   position: absolute;
   top: 1rem;
   left: 1rem;
   width: 80px;
   height: auto;
-  z-index: 10;
+  z-index: 5;
   opacity: 0.95;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
 }
 
-
-/* Diseño diagonal */
-/* Evita destellos blancos en móviles */
+/* Tarjeta diagonal (desktop) */
 .hero-diagonal {
-  backface-visibility: hidden;
-  transform: translateZ(0);
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
   will-change: transform;
+  transform: translateZ(0);
 }
 
+/* Texto */
 .hero-text-side {
   flex: 1;
   padding: 4rem 3rem;
@@ -65,6 +77,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  z-index: 3;
 }
 
 .hero-title {
@@ -81,6 +94,7 @@ html, body {
   margin-bottom: 2rem;
 }
 
+/* Botones */
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -95,6 +109,8 @@ html, body {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 4;                  /* se aseguran arriba */
 }
 
 .btn-morado {
@@ -112,13 +128,14 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Imagen ilustrativa */
+/* Imagen collage derecha */
 .hero-img-side {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  z-index: 3;
 }
 
 .hero-img {
@@ -128,6 +145,50 @@ html, body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* ======== Mobile ajustes ======== */
+@media screen and (max-width: 600px) {
+  .hero-diagonal {
+    flex-direction: column;
+    clip-path: none;
+    padding: 2rem 1rem;
+    margin: 0 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+
+  .hero-text-side {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-text {
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-img-side {
+    padding: 1rem;
+    order: 2;
+  }
+
+  .hero-img {
+    max-height: 260px;
+  }
+
+  .hero-logo {
+    width: 60px;
+  }
+}
 
 /*InfoAdolescentes*/
 
@@ -220,7 +281,16 @@ html, body {
   color: white;
   padding: 1.5rem;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 4rem;
+  z-index: 10;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 1rem;
+    margin-top: 3rem;
+  }
 }
 
 .footer-text {
@@ -648,4 +718,3 @@ img{
     width: 50px;
   }
 }
-
