@@ -91,7 +91,7 @@ export default function InfoJovenes() {
         <p className="contact-text">¡Escríbenos con confianza, estamos para apoyarte! 🙌</p>
         <div className="contact-buttons-row">
           <a
-            href="https://wa.me/522721656576"
+            href="https://wa.me/522722359577"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-btn whatsapp"
